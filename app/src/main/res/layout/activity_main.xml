@@ -146,6 +146,7 @@
         <Button
             android:id="@+id/equals"
             android:text="@string/equals"
+            android:onClick="onEqualsClicked"
             style="@style/button"
             />
 
