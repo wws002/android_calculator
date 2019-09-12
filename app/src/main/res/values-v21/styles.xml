@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="numberButton">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,71 @@
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+
+import java.nio.charset.Charset;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void onButtonClicked(View v){
+        TextView textBar = findViewById(R.id.textBar);
+
+        if(v.getId() == R.id._0)
+            textBar.append("0");
+        if(v.getId() == R.id._1)
+            textBar.append("1");
+        if(v.getId() == R.id._2)
+            textBar.append("2");
+        if(v.getId() == R.id._3)
+            textBar.append("3");
+        if(v.getId() == R.id._4)
+            textBar.append("4");
+        if(v.getId() == R.id._5)
+            textBar.append("5");
+        if(v.getId() == R.id._6)
+            textBar.append("6");
+        if(v.getId() == R.id._7)
+            textBar.append("7");
+        if(v.getId() == R.id._8)
+            textBar.append("8");
+        if(v.getId() == R.id._9)
+            textBar.append("9");
+
+        if(v.getId() == R.id.plus)
+            textBar.append("+");
+        if(v.getId() == R.id.minus)
+            textBar.append("-");
+        if(v.getId() == R.id.times)
+            textBar.append("*");
+        if(v.getId() == R.id.divided_by)
+            textBar.append("/");
+        if(v.getId() == R.id.point)
+            textBar.append(".");
+    }
+
+    public void onClearClicked(View v){
+        TextView textBar = findViewById(R.id.textBar);
+        textBar.setText("");
+    }
+
+    public void onBackClicked(View v) {
+        TextView textBar = findViewById(R.id.textBar);
+        String currentText = textBar.getText().toString();
+        int textLength = currentText.length();
+        if(textLength > 0)
+        {
+            String newText = currentText.substring(0, textLength-1);
+            textBar.setText(newText);
+        }
+    }
+}
