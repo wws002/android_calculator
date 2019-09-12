@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
     public void onBackClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
         String currentText = textBar.getText().toString();
-        int textLength = currentText.length();
-        if(textLength > 0)
+
+        if(currentText.length() > 0)
         {
-            String newText = currentText.substring(0, textLength-1);
+            String newText = currentText.substring(0, currentText.length() - 1);
             textBar.setText(newText);
         }
     }
