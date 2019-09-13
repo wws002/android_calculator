@@ -17,5 +17,6 @@
     <string name="point">.</string>
     <string name="equals">=</string>
     <string name="back">back</string>
-    <string name="clear">clear</string>
+    <string name="clear">ac</string>
+    <string name="negative">+/-</string>
 </resources>

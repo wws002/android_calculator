@@ -28,7 +28,7 @@
         android:id="@+id/bckAndclr"
         android:layout_width="320dp"
         android:layout_height="80dp"
-        android:columnCount="2"
+        android:columnCount="3"
         android:rowCount="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,13 @@
         <Button
             android:text="@string/clear"
             android:onClick="onClearClicked"
-            style="@style/bigButton"
+            style="@style/clearAndNegativeButton"
+            />
+
+        <Button
+            android:text="@string/negative"
+            android:onClick="onNegativeClicked"
+            style="@style/clearAndNegativeButton"
             />
     </GridLayout>
 
@@ -170,7 +176,5 @@
             android:onClick="onButtonClicked"
             style="@style/button"
             />
-
     </GridLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

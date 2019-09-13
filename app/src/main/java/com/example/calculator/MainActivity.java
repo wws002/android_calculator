@@ -157,13 +157,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onNegativeClicked(View v){
+        TextView textBar = findViewById(R.id.textBar);
+        if(!textBar.getText().toString().isEmpty()){
+            float negNum = Float.parseFloat(textBar.getText().toString());
+            negNum = negNum * -1;
+            textBar.setText(Float.toString(negNum));
+        }
+    }
+
     public void onEqualsClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
         currentNumber = textBar.getText().toString();
 
         if(!currentNumber.isEmpty()) {
             number2 = Float.parseFloat(currentNumber);
-
 
             if (operand.equals("+")) {
                 float result = number1 + number2;
