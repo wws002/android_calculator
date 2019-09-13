@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.nio.charset.Charset;
+import java.security.cert.TrustAnchor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,40 +18,119 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    float number1;
+    float number2;
+    boolean clearScreen;
+    String operand;
+    String currentNumber;
+
     public void onButtonClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
 
-        if (v.getId() == R.id._0)
-            textBar.append("0");
-        if (v.getId() == R.id._1)
-            textBar.append("1");
-        if (v.getId() == R.id._2)
-            textBar.append("2");
-        if (v.getId() == R.id._3)
-            textBar.append("3");
-        if (v.getId() == R.id._4)
-            textBar.append("4");
-        if (v.getId() == R.id._5)
-            textBar.append("5");
-        if (v.getId() == R.id._6)
-            textBar.append("6");
-        if (v.getId() == R.id._7)
-            textBar.append("7");
-        if (v.getId() == R.id._8)
-            textBar.append("8");
-        if (v.getId() == R.id._9)
-            textBar.append("9");
+        //numbers
+        if (v.getId() == R.id._0) {
+            if(clearScreen){
+                textBar.setText("0");
+                clearScreen = false;
+            }
+            else textBar.append("0");
+        }
+        if (v.getId() == R.id._1) {
+            if(clearScreen){
+                textBar.setText("1");
+                clearScreen = false;
+            }
+            else textBar.append("1");
+        }
+        if (v.getId() == R.id._2) {
+            if(clearScreen){
+                textBar.setText("2");
+                clearScreen = false;
+            }
+            else textBar.append("2");
+        }
+        if (v.getId() == R.id._3) {
+            if(clearScreen){
+                textBar.setText("3");
+                clearScreen = false;
+            }
+            else textBar.append("3");
+        }
+        if (v.getId() == R.id._4) {
+            if(clearScreen){
+                textBar.setText("4");
+                clearScreen = false;
+            }
+            else textBar.append("4");
+        }
+        if (v.getId() == R.id._5) {
+            if(clearScreen){
+                textBar.setText("5");
+                clearScreen = false;
+            }
+            else textBar.append("5");
+        }
+        if (v.getId() == R.id._6) {
+            if(clearScreen){
+                textBar.setText("6");
+                clearScreen = false;
+            }
+            else textBar.append("6");
+        }
+        if (v.getId() == R.id._7) {
+            if(clearScreen){
+                textBar.setText("7");
+                clearScreen = false;
+            }
+            else textBar.append("7");
+        }
+        if (v.getId() == R.id._8) {
+            if(clearScreen){
+                textBar.setText("8");
+                clearScreen = false;
+            }
+            else textBar.append("8");
+        }
+        if (v.getId() == R.id._9) {
+            if(clearScreen){
+                textBar.setText("9");
+                clearScreen = false;
+            }
+            else textBar.append("9");
+        }
+        if (v.getId() == R.id.point) {
+            if(clearScreen){
+                textBar.setText(".");
+                clearScreen = false;
+            }
+            else textBar.append(".");
+        }
 
-        if (v.getId() == R.id.plus)
-            textBar.append("+");
-        if (v.getId() == R.id.minus)
-            textBar.append("-");
-        if (v.getId() == R.id.times)
-            textBar.append("*");
-        if (v.getId() == R.id.divided_by)
-            textBar.append("/");
-        if (v.getId() == R.id.point)
-            textBar.append(".");
+        //operators
+        if (v.getId() == R.id.plus) {
+            currentNumber = textBar.getText().toString();
+            number1 = Float.parseFloat(currentNumber);
+            operand = "+";
+            clearScreen = true;
+        }
+        if (v.getId() == R.id.minus) {
+            currentNumber = textBar.getText().toString();
+            number1 = Float.parseFloat(currentNumber);
+            operand = "-";
+            clearScreen = true;
+        }
+        if (v.getId() == R.id.times) {
+            currentNumber = textBar.getText().toString();
+            number1 = Float.parseFloat(currentNumber);
+            operand = "*";
+            clearScreen = true;
+        }
+        if (v.getId() == R.id.divided_by) {
+            currentNumber = textBar.getText().toString();
+            number1 = Float.parseFloat(currentNumber);
+            operand = "/";
+            clearScreen = true;
+        }
     }
 
     public void onClearClicked(View v) {
@@ -70,28 +150,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void onEqualsClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
-        String currentText = textBar.getText().toString();
+        currentNumber = textBar.getText().toString();
+        number2 = Float.parseFloat(currentNumber);
 
-        if (currentText.length() > 2) {
-            String num1 = currentText.substring(0, 1);
-            String operand = currentText.substring(1, 2);
-            String num2 = currentText.substring(2, 3);
 
-            int int1 = Integer.parseInt(num1);
-            int int2 = Integer.parseInt(num2);
-            int result = 0;
-
-            if (operand.equals("+"))
-                result = int1 + int2;
-            if(operand.equals("-"))
-                result = int1 - int2;
-            if(operand.equals("*"))
-                result = int1 * int2;
-            if(operand.equals("/"))
-                result = int1 / int2;
-
-            String textResult = Integer.toString(result);
-            textBar.setText(textResult);
+        if(operand.equals("+"))
+        {
+            float result = number1 + number2;
+            textBar.setText(Float.toString(result));
+        }
+        if(operand.equals("-"))
+        {
+            float result = number1 - number2;
+            textBar.setText(Float.toString(result));
+        }
+        if(operand.equals("*"))
+        {
+            float result = number1 * number2;
+            textBar.setText(Float.toString(result));
+        }
+        if(operand.equals("/"))
+        {
+            float result = number1 / number2;
+            textBar.setText(Float.toString(result));
         }
     }
 }
