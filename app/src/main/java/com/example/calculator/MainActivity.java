@@ -99,37 +99,46 @@ public class MainActivity extends AppCompatActivity {
             else textBar.append("9");
         }
         if (v.getId() == R.id.point) {
-            if(clearScreen){
-                textBar.setText(".");
-                clearScreen = false;
+            if(!textBar.getText().toString().contains(".") && !textBar.getText().toString().isEmpty()) {
+                if (clearScreen) {
+                    textBar.setText(".");
+                    clearScreen = false;
+                } else textBar.append(".");
             }
-            else textBar.append(".");
         }
 
         //operators
         if (v.getId() == R.id.plus) {
             currentNumber = textBar.getText().toString();
-            number1 = Float.parseFloat(currentNumber);
-            operand = "+";
-            clearScreen = true;
+            if(!currentNumber.isEmpty()) {
+                number1 = Float.parseFloat(currentNumber);
+                operand = "+";
+                clearScreen = true;
+            }
         }
         if (v.getId() == R.id.minus) {
             currentNumber = textBar.getText().toString();
-            number1 = Float.parseFloat(currentNumber);
-            operand = "-";
-            clearScreen = true;
+            if(!currentNumber.isEmpty()) {
+                number1 = Float.parseFloat(currentNumber);
+                operand = "-";
+                clearScreen = true;
+            }
         }
         if (v.getId() == R.id.times) {
             currentNumber = textBar.getText().toString();
-            number1 = Float.parseFloat(currentNumber);
-            operand = "*";
-            clearScreen = true;
+            if(!currentNumber.isEmpty()) {
+                number1 = Float.parseFloat(currentNumber);
+                operand = "*";
+                clearScreen = true;
+            }
         }
         if (v.getId() == R.id.divided_by) {
             currentNumber = textBar.getText().toString();
-            number1 = Float.parseFloat(currentNumber);
-            operand = "/";
-            clearScreen = true;
+            if(!currentNumber.isEmpty()) {
+                number1 = Float.parseFloat(currentNumber);
+                operand = "/";
+                clearScreen = true;
+            }
         }
     }
 
@@ -151,28 +160,28 @@ public class MainActivity extends AppCompatActivity {
     public void onEqualsClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
         currentNumber = textBar.getText().toString();
-        number2 = Float.parseFloat(currentNumber);
+
+        if(!currentNumber.isEmpty()) {
+            number2 = Float.parseFloat(currentNumber);
 
 
-        if(operand.equals("+"))
-        {
-            float result = number1 + number2;
-            textBar.setText(Float.toString(result));
-        }
-        if(operand.equals("-"))
-        {
-            float result = number1 - number2;
-            textBar.setText(Float.toString(result));
-        }
-        if(operand.equals("*"))
-        {
-            float result = number1 * number2;
-            textBar.setText(Float.toString(result));
-        }
-        if(operand.equals("/"))
-        {
-            float result = number1 / number2;
-            textBar.setText(Float.toString(result));
+            if (operand.equals("+")) {
+                float result = number1 + number2;
+                textBar.setText(Float.toString(result));
+            }
+            if (operand.equals("-")) {
+                float result = number1 - number2;
+                textBar.setText(Float.toString(result));
+            }
+            if (operand.equals("*")) {
+                float result = number1 * number2;
+                textBar.setText(Float.toString(result));
+            }
+            if (operand.equals("/")) {
+                float result = number1 / number2;
+                textBar.setText(Float.toString(result));
+            }
+            clearScreen = true;
         }
     }
 }
