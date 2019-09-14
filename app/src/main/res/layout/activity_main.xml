@@ -68,84 +68,84 @@
         <Button
             android:id="@+id/_7"
             android:text="@string/_7"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_8"
             android:text="@string/_8"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_9"
             android:text="@string/_9"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/plus"
             android:text="@string/plus"
-            android:onClick="onButtonClicked"
+            android:onClick="onOpButtonClicked"
             style="@style/button"
             />
 
         <Button
             android:id="@+id/_4"
             android:text="@string/_4"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_5"
             android:text="@string/_5"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_6"
             android:text="@string/_6"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/minus"
             android:text="@string/minus"
-            android:onClick="onButtonClicked"
+            android:onClick="onOpButtonClicked"
             style="@style/button"
             />
 
         <Button
             android:id="@+id/_1"
             android:text="@string/_1"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_2"
             android:text="@string/_2"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/_3"
             android:text="@string/_3"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/times"
             android:text="@string/times"
-            android:onClick="onButtonClicked"
+            android:onClick="onOpButtonClicked"
             style="@style/button"
             />
 
@@ -159,21 +159,21 @@
         <Button
             android:id="@+id/_0"
             android:text="@string/_0"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/numberButton"
             />
 
         <Button
             android:id="@+id/point"
             android:text="@string/point"
-            android:onClick="onButtonClicked"
+            android:onClick="onNumberButtonClicked"
             style="@style/button"
             />
 
         <Button
             android:id="@+id/divided_by"
             android:text="@string/divided_by"
-            android:onClick="onButtonClicked"
+            android:onClick="onOpButtonClicked"
             style="@style/button"
             />
     </GridLayout>

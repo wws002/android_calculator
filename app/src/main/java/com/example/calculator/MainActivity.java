@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String operand;
     String currentNumber;
 
-    public void onButtonClicked(View v) {
+    public void onNumberButtonClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
 
         //numbers
@@ -106,8 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 } else textBar.append(".");
             }
         }
+    }
 
-        //operators
+    public void onOpButtonClicked(View v){
+        TextView textBar = findViewById(R.id.textBar);
+
         if (v.getId() == R.id.plus) {
             currentNumber = textBar.getText().toString();
             if(!currentNumber.isEmpty()) {
