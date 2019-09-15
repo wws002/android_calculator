@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     float number1;
     float number2;
     boolean clearScreen;
+    boolean opClicked = false;
     String operand;
     String currentNumber;
 
@@ -113,34 +114,90 @@ public class MainActivity extends AppCompatActivity {
 
         if (v.getId() == R.id.plus) {
             currentNumber = textBar.getText().toString();
+            if(opClicked){
+                if(operand.equals("+"))
+                    number1 = number1 + Float.parseFloat(currentNumber);
+                if(operand.equals("-"))
+                    number1 = number1 - Float.parseFloat(currentNumber);
+                if(operand.equals("*"))
+                    number1 = number1 * Float.parseFloat(currentNumber);
+                if(operand.equals("/"))
+                    number1 = number1 / Float.parseFloat(currentNumber);
+                operand = "+";
+                clearScreen = true;
+                return;
+            }
             if(!currentNumber.isEmpty()) {
                 number1 = Float.parseFloat(currentNumber);
                 operand = "+";
                 clearScreen = true;
+                opClicked = true;
             }
         }
         if (v.getId() == R.id.minus) {
             currentNumber = textBar.getText().toString();
+            if(opClicked){
+                if(operand.equals("+"))
+                    number1 = number1 + Float.parseFloat(currentNumber);
+                if(operand.equals("-"))
+                    number1 = number1 - Float.parseFloat(currentNumber);
+                if(operand.equals("*"))
+                    number1 = number1 * Float.parseFloat(currentNumber);
+                if(operand.equals("/"))
+                    number1 = number1 / Float.parseFloat(currentNumber);
+                operand = "-";
+                clearScreen = true;
+                return;
+            }
             if(!currentNumber.isEmpty()) {
                 number1 = Float.parseFloat(currentNumber);
                 operand = "-";
                 clearScreen = true;
+                opClicked = true;
             }
         }
         if (v.getId() == R.id.times) {
             currentNumber = textBar.getText().toString();
+            if(opClicked){
+                if(operand.equals("+"))
+                    number1 = number1 + Float.parseFloat(currentNumber);
+                if(operand.equals("-"))
+                    number1 = number1 - Float.parseFloat(currentNumber);
+                if(operand.equals("*"))
+                    number1 = number1 * Float.parseFloat(currentNumber);
+                if(operand.equals("/"))
+                    number1 = number1 / Float.parseFloat(currentNumber);
+                operand = "*";
+                clearScreen = true;
+                return;
+            }
             if(!currentNumber.isEmpty()) {
                 number1 = Float.parseFloat(currentNumber);
                 operand = "*";
                 clearScreen = true;
+                opClicked = true;
             }
         }
         if (v.getId() == R.id.divided_by) {
             currentNumber = textBar.getText().toString();
+            if(opClicked){
+                if(operand.equals("+"))
+                    number1 = number1 + Float.parseFloat(currentNumber);
+                if(operand.equals("-"))
+                    number1 = number1 - Float.parseFloat(currentNumber);
+                if(operand.equals("*"))
+                    number1 = number1 * Float.parseFloat(currentNumber);
+                if(operand.equals("/"))
+                    number1 = number1 / Float.parseFloat(currentNumber);
+                operand = "/";
+                clearScreen = true;
+                return;
+            }
             if(!currentNumber.isEmpty()) {
                 number1 = Float.parseFloat(currentNumber);
                 operand = "/";
                 clearScreen = true;
+                opClicked = true;
             }
         }
     }
@@ -148,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClearClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
         textBar.setText("");
+        opClicked = false;
     }
 
     public void onBackClicked(View v) {
@@ -193,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
                 textBar.setText(Float.toString(result));
             }
             clearScreen = true;
+            opClicked = false;
         }
     }
 }
