@@ -236,19 +236,35 @@ public class MainActivity extends AppCompatActivity {
 
             if (operand.equals("+")) {
                 float result = number1 + number2;
-                textBar.setText(Float.toString(result));
+                if(result%1 == 0){
+                    long intResult = (long) result;
+                    textBar.setText(Long.toString(intResult));
+                }
+                else textBar.setText(Float.toString(result));
             }
             if (operand.equals("-")) {
                 float result = number1 - number2;
-                textBar.setText(Float.toString(result));
+                if(result%1 == 0){
+                    long intResult = (long) result;
+                    textBar.setText(Long.toString(intResult));
+                }
+                else textBar.setText(Float.toString(result));
             }
             if (operand.equals("*")) {
                 float result = number1 * number2;
-                textBar.setText(Float.toString(result));
+                if(result%1 == 0){
+                    long intResult = (long) result;
+                    textBar.setText(Long.toString(intResult));
+                }
+                else textBar.setText(Float.toString(result));
             }
             if (operand.equals("/")) {
                 float result = number1 / number2;
-                textBar.setText(Float.toString(result));
+                if(result%1 == 0){
+                    long intResult = (long) result;
+                    textBar.setText(Long.toString(intResult));
+                }
+                else textBar.setText(Float.toString(result));
             }
             clearScreen = true;
             opClicked = false;
