@@ -101,10 +101,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (v.getId() == R.id.point) {
             if(!textBar.getText().toString().contains(".") && !textBar.getText().toString().isEmpty()) {
-                if (clearScreen) {
-                    textBar.setText(".");
-                    clearScreen = false;
-                } else textBar.append(".");
+                textBar.append(".");
             }
         }
     }
@@ -231,12 +228,14 @@ public class MainActivity extends AppCompatActivity {
         TextView textBar = findViewById(R.id.textBar);
         currentNumber = textBar.getText().toString();
 
-        if(!currentNumber.isEmpty()) {
+        if(!currentNumber.isEmpty() && opClicked) {
             number2 = Float.parseFloat(currentNumber);
 
             if (operand.equals("+")) {
                 float result = number1 + number2;
-                if(result%1 == 0){
+                if(result > 10000000)
+                    textBar.setText(Float.toString(result));
+                else if(result%1 == 0){
                     long intResult = (long) result;
                     textBar.setText(Long.toString(intResult));
                 }
@@ -244,7 +243,9 @@ public class MainActivity extends AppCompatActivity {
             }
             if (operand.equals("-")) {
                 float result = number1 - number2;
-                if(result%1 == 0){
+                if(result > 10000000)
+                    textBar.setText(Float.toString(result));
+                else if(result%1 == 0){
                     long intResult = (long) result;
                     textBar.setText(Long.toString(intResult));
                 }
@@ -252,7 +253,9 @@ public class MainActivity extends AppCompatActivity {
             }
             if (operand.equals("*")) {
                 float result = number1 * number2;
-                if(result%1 == 0){
+                if(result > 10000000)
+                    textBar.setText(Float.toString(result));
+                else if(result%1 == 0){
                     long intResult = (long) result;
                     textBar.setText(Long.toString(intResult));
                 }
@@ -260,7 +263,9 @@ public class MainActivity extends AppCompatActivity {
             }
             if (operand.equals("/")) {
                 float result = number1 / number2;
-                if(result%1 == 0){
+                if(result > 10000000)
+                    textBar.setText(Float.toString(result));
+                else if(result%1 == 0){
                     long intResult = (long) result;
                     textBar.setText(Long.toString(intResult));
                 }
