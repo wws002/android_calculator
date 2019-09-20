@@ -3,12 +3,11 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import java.nio.charset.Charset;
-import java.security.cert.TrustAnchor;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    float number1;
-    float number2;
+    BigDecimal number1;
+    BigDecimal number2;
+    BigDecimal currentNumber;
     boolean clearScreen;
     boolean opClicked = false;
     String operand;
-    String currentNumber;
 
     public void onNumberButtonClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
@@ -110,88 +109,88 @@ public class MainActivity extends AppCompatActivity {
         TextView textBar = findViewById(R.id.textBar);
 
         if (v.getId() == R.id.plus) {
-            currentNumber = textBar.getText().toString();
+            currentNumber = new BigDecimal(textBar.getText().toString());
             if(opClicked){
                 if(operand.equals("+"))
-                    number1 = number1 + Float.parseFloat(currentNumber);
+                    number1 = number1.add(currentNumber);
                 if(operand.equals("-"))
-                    number1 = number1 - Float.parseFloat(currentNumber);
+                    number1 = number1.subtract(currentNumber);
                 if(operand.equals("*"))
-                    number1 = number1 * Float.parseFloat(currentNumber);
+                    number1 = number1.multiply(currentNumber);
                 if(operand.equals("/"))
-                    number1 = number1 / Float.parseFloat(currentNumber);
+                    number1 = number1.divide(currentNumber);
                 operand = "+";
                 clearScreen = true;
                 return;
             }
-            if(!currentNumber.isEmpty()) {
-                number1 = Float.parseFloat(currentNumber);
+            else {
+                number1 = currentNumber;
                 operand = "+";
                 clearScreen = true;
                 opClicked = true;
             }
         }
         if (v.getId() == R.id.minus) {
-            currentNumber = textBar.getText().toString();
+            currentNumber = new BigDecimal(textBar.getText().toString());
             if(opClicked){
                 if(operand.equals("+"))
-                    number1 = number1 + Float.parseFloat(currentNumber);
+                    number1 = number1.add(currentNumber);
                 if(operand.equals("-"))
-                    number1 = number1 - Float.parseFloat(currentNumber);
+                    number1 = number1.subtract(currentNumber);
                 if(operand.equals("*"))
-                    number1 = number1 * Float.parseFloat(currentNumber);
+                    number1 = number1.multiply(currentNumber);
                 if(operand.equals("/"))
-                    number1 = number1 / Float.parseFloat(currentNumber);
+                    number1 = number1.divide(currentNumber);
                 operand = "-";
                 clearScreen = true;
                 return;
             }
-            if(!currentNumber.isEmpty()) {
-                number1 = Float.parseFloat(currentNumber);
+            else {
+                number1 = currentNumber;
                 operand = "-";
                 clearScreen = true;
                 opClicked = true;
             }
         }
         if (v.getId() == R.id.times) {
-            currentNumber = textBar.getText().toString();
+            currentNumber = new BigDecimal(textBar.getText().toString());
             if(opClicked){
                 if(operand.equals("+"))
-                    number1 = number1 + Float.parseFloat(currentNumber);
+                    number1 = number1.add(currentNumber);
                 if(operand.equals("-"))
-                    number1 = number1 - Float.parseFloat(currentNumber);
+                    number1 = number1.subtract(currentNumber);
                 if(operand.equals("*"))
-                    number1 = number1 * Float.parseFloat(currentNumber);
+                    number1 = number1.multiply(currentNumber);
                 if(operand.equals("/"))
-                    number1 = number1 / Float.parseFloat(currentNumber);
+                    number1 = number1.divide(currentNumber);
                 operand = "*";
                 clearScreen = true;
                 return;
             }
-            if(!currentNumber.isEmpty()) {
-                number1 = Float.parseFloat(currentNumber);
+            else {
+                number1 = currentNumber;
                 operand = "*";
                 clearScreen = true;
                 opClicked = true;
             }
         }
         if (v.getId() == R.id.divided_by) {
-            currentNumber = textBar.getText().toString();
+            currentNumber = new BigDecimal(textBar.getText().toString());
             if(opClicked){
                 if(operand.equals("+"))
-                    number1 = number1 + Float.parseFloat(currentNumber);
+                    number1 = number1.add(currentNumber);
                 if(operand.equals("-"))
-                    number1 = number1 - Float.parseFloat(currentNumber);
+                    number1 = number1.subtract(currentNumber);
                 if(operand.equals("*"))
-                    number1 = number1 * Float.parseFloat(currentNumber);
+                    number1 = number1.multiply(currentNumber);
                 if(operand.equals("/"))
-                    number1 = number1 / Float.parseFloat(currentNumber);
+                    number1 = number1.divide(currentNumber);
                 operand = "/";
                 clearScreen = true;
                 return;
             }
-            if(!currentNumber.isEmpty()) {
-                number1 = Float.parseFloat(currentNumber);
+            else {
+                number1 = currentNumber;
                 operand = "/";
                 clearScreen = true;
                 opClicked = true;
@@ -226,50 +225,52 @@ public class MainActivity extends AppCompatActivity {
 
     public void onEqualsClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
-        currentNumber = textBar.getText().toString();
+        currentNumber = new BigDecimal(textBar.getText().toString());
 
-        if(!currentNumber.isEmpty() && opClicked) {
-            number2 = Float.parseFloat(currentNumber);
+        if(opClicked) {
+            number2 = currentNumber;
 
             if (operand.equals("+")) {
-                float result = number1 + number2;
-                if(result > 10000000)
-                    textBar.setText(Float.toString(result));
-                else if(result%1 == 0){
-                    long intResult = (long) result;
+                BigDecimal result = number1.add(number2);
+                if(result.intValue() > 10000000)
+                    textBar.setText(result.toString());
+                else if(result.floatValue()%1 == 0){
+                    long intResult = result.longValue();
                     textBar.setText(Long.toString(intResult));
                 }
-                else textBar.setText(Float.toString(result));
+                else textBar.setText(result.toString());
             }
             if (operand.equals("-")) {
-                float result = number1 - number2;
-                if(result > 10000000)
-                    textBar.setText(Float.toString(result));
-                else if(result%1 == 0){
-                    long intResult = (long) result;
+                BigDecimal result = number1.subtract(number2);
+                if(result.intValue() > 10000000)
+                    textBar.setText(result.toString());
+                else if(result.floatValue()%1 == 0){
+                    long intResult = result.longValue();
                     textBar.setText(Long.toString(intResult));
                 }
-                else textBar.setText(Float.toString(result));
+                else textBar.setText(result.toString());
             }
             if (operand.equals("*")) {
-                float result = number1 * number2;
-                if(result > 10000000)
-                    textBar.setText(Float.toString(result));
-                else if(result%1 == 0){
-                    long intResult = (long) result;
+                BigDecimal result = number1.multiply(number2);
+                if(result.intValue() > 10000000) {
+                    float floatResult = result.floatValue();
+                    textBar.setText(Float.toString(floatResult));
+                }
+                else if(result.floatValue()%1 == 0){
+                    long intResult = result.longValue();
                     textBar.setText(Long.toString(intResult));
                 }
-                else textBar.setText(Float.toString(result));
+                else textBar.setText(result.toString());
             }
             if (operand.equals("/")) {
-                float result = number1 / number2;
-                if(result > 10000000)
-                    textBar.setText(Float.toString(result));
-                else if(result%1 == 0){
-                    long intResult = (long) result;
+                BigDecimal result = number1.divide(number2);
+                if(result.intValue() > 10000000)
+                    textBar.setText(result.toString());
+                else if(result.floatValue()%1 == 0){
+                    long intResult = result.longValue();
                     textBar.setText(Long.toString(intResult));
                 }
-                else textBar.setText(Float.toString(result));
+                else textBar.setText(result.toString());
             }
             clearScreen = true;
             opClicked = false;
