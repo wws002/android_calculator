@@ -107,93 +107,90 @@ public class MainActivity extends AppCompatActivity {
 
     public void onOpButtonClicked(View v){
         TextView textBar = findViewById(R.id.textBar);
-
-        if (v.getId() == R.id.plus) {
-            currentNumber = new BigDecimal(textBar.getText().toString());
-            if(opClicked){
-                if(operand.equals("+"))
-                    number1 = number1.add(currentNumber);
-                if(operand.equals("-"))
-                    number1 = number1.subtract(currentNumber);
-                if(operand.equals("*"))
-                    number1 = number1.multiply(currentNumber);
-                if(operand.equals("/"))
-                    number1 = number1.divide(currentNumber);
-                operand = "+";
-                clearScreen = true;
-                return;
+        if(!textBar.getText().toString().isEmpty()) {
+            if (v.getId() == R.id.plus) {
+                currentNumber = new BigDecimal(textBar.getText().toString());
+                if (opClicked) {
+                    if (operand.equals("+"))
+                        number1 = number1.add(currentNumber);
+                    if (operand.equals("-"))
+                        number1 = number1.subtract(currentNumber);
+                    if (operand.equals("*"))
+                        number1 = number1.multiply(currentNumber);
+                    if (operand.equals("/"))
+                        number1 = number1.divide(currentNumber);
+                    operand = "+";
+                    clearScreen = true;
+                    return;
+                } else {
+                    number1 = currentNumber;
+                    operand = "+";
+                    clearScreen = true;
+                    opClicked = true;
+                }
             }
-            else {
-                number1 = currentNumber;
-                operand = "+";
-                clearScreen = true;
-                opClicked = true;
+            if (v.getId() == R.id.minus) {
+                currentNumber = new BigDecimal(textBar.getText().toString());
+                if (opClicked) {
+                    if (operand.equals("+"))
+                        number1 = number1.add(currentNumber);
+                    if (operand.equals("-"))
+                        number1 = number1.subtract(currentNumber);
+                    if (operand.equals("*"))
+                        number1 = number1.multiply(currentNumber);
+                    if (operand.equals("/"))
+                        number1 = number1.divide(currentNumber);
+                    operand = "-";
+                    clearScreen = true;
+                    return;
+                } else {
+                    number1 = currentNumber;
+                    operand = "-";
+                    clearScreen = true;
+                    opClicked = true;
+                }
             }
-        }
-        if (v.getId() == R.id.minus) {
-            currentNumber = new BigDecimal(textBar.getText().toString());
-            if(opClicked){
-                if(operand.equals("+"))
-                    number1 = number1.add(currentNumber);
-                if(operand.equals("-"))
-                    number1 = number1.subtract(currentNumber);
-                if(operand.equals("*"))
-                    number1 = number1.multiply(currentNumber);
-                if(operand.equals("/"))
-                    number1 = number1.divide(currentNumber);
-                operand = "-";
-                clearScreen = true;
-                return;
+            if (v.getId() == R.id.times) {
+                currentNumber = new BigDecimal(textBar.getText().toString());
+                if (opClicked) {
+                    if (operand.equals("+"))
+                        number1 = number1.add(currentNumber);
+                    if (operand.equals("-"))
+                        number1 = number1.subtract(currentNumber);
+                    if (operand.equals("*"))
+                        number1 = number1.multiply(currentNumber);
+                    if (operand.equals("/"))
+                        number1 = number1.divide(currentNumber);
+                    operand = "*";
+                    clearScreen = true;
+                    return;
+                } else {
+                    number1 = currentNumber;
+                    operand = "*";
+                    clearScreen = true;
+                    opClicked = true;
+                }
             }
-            else {
-                number1 = currentNumber;
-                operand = "-";
-                clearScreen = true;
-                opClicked = true;
-            }
-        }
-        if (v.getId() == R.id.times) {
-            currentNumber = new BigDecimal(textBar.getText().toString());
-            if(opClicked){
-                if(operand.equals("+"))
-                    number1 = number1.add(currentNumber);
-                if(operand.equals("-"))
-                    number1 = number1.subtract(currentNumber);
-                if(operand.equals("*"))
-                    number1 = number1.multiply(currentNumber);
-                if(operand.equals("/"))
-                    number1 = number1.divide(currentNumber);
-                operand = "*";
-                clearScreen = true;
-                return;
-            }
-            else {
-                number1 = currentNumber;
-                operand = "*";
-                clearScreen = true;
-                opClicked = true;
-            }
-        }
-        if (v.getId() == R.id.divided_by) {
-            currentNumber = new BigDecimal(textBar.getText().toString());
-            if(opClicked){
-                if(operand.equals("+"))
-                    number1 = number1.add(currentNumber);
-                if(operand.equals("-"))
-                    number1 = number1.subtract(currentNumber);
-                if(operand.equals("*"))
-                    number1 = number1.multiply(currentNumber);
-                if(operand.equals("/"))
-                    number1 = number1.divide(currentNumber);
-                operand = "/";
-                clearScreen = true;
-                return;
-            }
-            else {
-                number1 = currentNumber;
-                operand = "/";
-                clearScreen = true;
-                opClicked = true;
+            if (v.getId() == R.id.divided_by) {
+                currentNumber = new BigDecimal(textBar.getText().toString());
+                if (opClicked) {
+                    if (operand.equals("+"))
+                        number1 = number1.add(currentNumber);
+                    if (operand.equals("-"))
+                        number1 = number1.subtract(currentNumber);
+                    if (operand.equals("*"))
+                        number1 = number1.multiply(currentNumber);
+                    if (operand.equals("/"))
+                        number1 = number1.divide(currentNumber);
+                    operand = "/";
+                    clearScreen = true;
+                    return;
+                } else {
+                    number1 = currentNumber;
+                    operand = "/";
+                    clearScreen = true;
+                    opClicked = true;
+                }
             }
         }
     }
