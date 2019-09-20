@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,14 +19,13 @@ public class MainActivity extends AppCompatActivity {
     BigDecimal number1;
     BigDecimal number2;
     BigDecimal currentNumber;
-    boolean clearScreen;
+    boolean clearScreen =false;
     boolean opClicked = false;
     String operand;
 
     public void onNumberButtonClicked(View v) {
         TextView textBar = findViewById(R.id.textBar);
 
-        //numbers
         if (v.getId() == R.id._0) {
             if(clearScreen){
                 textBar.setText("0");
@@ -121,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                         number1 = number1.divide(currentNumber);
                     operand = "+";
                     clearScreen = true;
-                    return;
                 } else {
                     number1 = currentNumber;
                     operand = "+";
@@ -142,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
                         number1 = number1.divide(currentNumber);
                     operand = "-";
                     clearScreen = true;
-                    return;
                 } else {
                     number1 = currentNumber;
                     operand = "-";
@@ -163,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                         number1 = number1.divide(currentNumber);
                     operand = "*";
                     clearScreen = true;
-                    return;
                 } else {
                     number1 = currentNumber;
                     operand = "*";
@@ -184,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                         number1 = number1.divide(currentNumber);
                     operand = "/";
                     clearScreen = true;
-                    return;
                 } else {
                     number1 = currentNumber;
                     operand = "/";
